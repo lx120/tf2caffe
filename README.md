@@ -18,5 +18,9 @@ python ckp2caffe.py --model_path './model/tf_model/Model' --meta_path './model/t
 注意点：
 
 (1) caffe与tensorflow的pad方式不同
+```
+   (1) tensorflow使用SAME的pad方式的时候，如果需要填补2个像素则会在H、W两边补全，但是只需要一个像素时填补的H的最下面一行、W的最右边一行
+   (2) caffe只支持H、W两边pad， out = (input + 2*pad - k) / stride + 1
+```
 
 (2) tensorflow中的BN层在caffe中为BN+scale，注意两个框架下的这些层的参数的不同，需要统一
